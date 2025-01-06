@@ -17,4 +17,7 @@ To check code coverage EclEmma used.
 For testing Loggers are added.
 
 
+To test the application please go throuth the below link
+Supporting Details.txt
+
 
