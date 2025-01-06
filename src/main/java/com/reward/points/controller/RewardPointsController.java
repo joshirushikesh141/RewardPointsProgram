@@ -1,5 +1,6 @@
 package com.reward.points.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,7 +39,7 @@ public class RewardPointsController {
     private static final Logger logger = LoggerFactory.getLogger(RewardPointsController.class);
     
     @PostMapping("/saveCustomerDetails")
-    public ResponseEntity<String> saveCustomerDetails(@RequestBody Customer customer){
+    public ResponseEntity<Customer> saveCustomerDetails(@RequestBody Customer customer){
     	Customer save = new Customer();
     	try {
     		save= customerRepository.save(customer);
@@ -46,11 +47,11 @@ public class RewardPointsController {
 		} catch (Exception e) {
 			logger.error("exception in saveCustomerDetails {}",e);
 		}
-        return new ResponseEntity<>("Customer details saved successfully!!",HttpStatus.OK);
+        return new ResponseEntity<>(save,HttpStatus.OK);
     }
     
     @PostMapping("/saveTransactionDetails")
-    public ResponseEntity<String> saveTransactionDetails(@RequestBody Transaction transaction){
+    public ResponseEntity<Transaction> saveTransactionDetails(@RequestBody Transaction transaction){
     	Transaction save = new Transaction();
     	try {
     		save= transactionRepository.save(transaction);
@@ -58,9 +59,20 @@ public class RewardPointsController {
 		} catch (Exception e) {
 			logger.error("exception in saveTransactionDetails {}",e);
 		}
-        return new ResponseEntity<>("Transaction details saved successfully!!",HttpStatus.OK);
+        return new ResponseEntity<>(save,HttpStatus.OK);
     }
     
+    @PostMapping("/saveAllTransactionDetails")
+    public ResponseEntity<List<Transaction>> saveAllTransactionDetails(@RequestBody List<Transaction> transaction){
+    	List<Transaction> save = new ArrayList<>();
+    	try {
+    		save= transactionRepository.saveAll(transaction);
+    		logger.info("save {}",save);
+		} catch (Exception e) {
+			logger.error("exception in saveAllTransactionDetails {}",e);
+		}
+        return new ResponseEntity<>(save,HttpStatus.OK);
+    }
     @GetMapping("/getCustomerDetails/{customerId}")
     public ResponseEntity<Customer> getCustomerDetailsByCustomerId(@PathVariable("customerId") Long customerId){
         Optional<Customer> customer = customerRepository.findById(customerId);
