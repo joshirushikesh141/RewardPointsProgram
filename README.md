@@ -18,6 +18,8 @@ For testing Loggers are added.
 
 
 To test the application please go throuth the below link
-Supporting Details.txt
+
+https://github.com/joshirushikesh141/RewardPointsProgram/blob/e64cc88118a11e4b8cb9a72aacd21e88882784dd/Supporting%20Details.txt
+
 
 
