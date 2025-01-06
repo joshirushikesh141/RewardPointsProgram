@@ -6,6 +6,8 @@ Used of JPA Repository.
 
 Database used as MySQL.
 
+Also Provided details to use H2 Database as per the convinience.
+
 For unit test cases jUnit used.
 
 To check code coverage EclEmma used.
