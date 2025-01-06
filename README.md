@@ -1,11 +1,5 @@
 # RewardPointsProgram
 
-For Documentation Swagger UI is Added.
-
-localhost:8080/v2/api-docs
-
-localhost:8080/swagger-ui.html
-
 All the endpoints are mentioned in attached link plz check for your reference
 
 Used of JPA Repository.
