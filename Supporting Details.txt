@@ -205,3 +205,20 @@ localhost:8080/api/getCustomerDetails/2
 localhost:8080/api/getTransactionDetailsByCustomerId/2
 localhost:8080/api/rewards/2
 ===================================================
+
+
+We can also use h2 console if needed as below.
+http://localhost:8080/h2-console
+
+<dependency>
+	<groupId>com.h2database</groupId>
+	<artifactId>h2</artifactId>
+	<scope>runtime</scope>
+ </dependency>
+
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.h2.console.enabled=true
