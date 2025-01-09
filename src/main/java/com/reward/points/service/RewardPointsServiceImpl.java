@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import com.reward.points.constants.Constants;
 import com.reward.points.entity.Customer;
 import com.reward.points.entity.Transaction;
+import com.reward.points.exception.CustomerNotFoundException;
+import com.reward.points.exception.TransactionNotFoundException;
 import com.reward.points.model.Rewards;
 import com.reward.points.repository.CustomerRepository;
 import com.reward.points.repository.TransactionRepository;
@@ -30,15 +32,15 @@ public class RewardPointsServiceImpl implements RewardPointsService {
 	private static final Logger logger = LoggerFactory.getLogger(RewardPointsServiceImpl.class);
 
 	@Override
-	public Customer saveCustomerDetails(Customer customer) {
+	public String saveCustomerDetails(Customer customer) {
 		Customer save = customerRepository.save(customer);
-		return save;
+		return "Customer details saved/updated successfully having customer ID: "+save.getCustomerId();
 	}
 
 	@Override
-	public Transaction saveTransactionDetails(Transaction transaction) {
+	public String saveTransactionDetails(Transaction transaction) {
 		Transaction save = transactionRepository.save(transaction);
-		return save;
+		return "Transaction completed successfully having transaction ID: "+save.getTransactionId();
 	}
 
 	@Override
@@ -50,7 +52,7 @@ public class RewardPointsServiceImpl implements RewardPointsService {
 	@Override
 	public Customer getCustomerDetailsByCustomerId(Long customerId) {
 		Optional<Customer> byId = customerRepository.findById(customerId);
-		Customer customer = byId.orElseThrow(()-> new RuntimeException("Customer Not Found"));
+		Customer customer = byId.orElseThrow(()-> new CustomerNotFoundException("Customer Not Found"));
 		return customer;
 	}
 
@@ -58,6 +60,25 @@ public class RewardPointsServiceImpl implements RewardPointsService {
 	public List<Transaction> getTransactionDetailsByCustomerId(Long customerId) {
 		List<Transaction> byCustomerId = transactionRepository.findByCustomerId(customerId);
 		return byCustomerId;
+	}
+	
+	@Override
+	public String deleteCustomerDetails(Long customerId) {
+		customerRepository.deleteById(customerId);
+		return "Customer details has been deleted !!!";
+	}
+	
+	@Override
+	public Transaction getTransactionDetailsByTransactionId(Long transactionId) {
+		Optional<Transaction> findById = transactionRepository.findById(transactionId);
+		Transaction transaction = findById.orElseThrow(()-> new TransactionNotFoundException("Transaction not found"));
+		return transaction;
+	}
+	
+	@Override
+	public String deleteTransactionDetails(Long transactionId) {
+		transactionRepository.deleteById(transactionId);
+		return "Transaction details has been deleted !!!";
 	}
 
 	@Override
