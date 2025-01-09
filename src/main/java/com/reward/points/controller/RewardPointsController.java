@@ -2,6 +2,7 @@ package com.reward.points.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,7 +50,7 @@ public class RewardPointsController {
         return new ResponseEntity<>(save,HttpStatus.OK);
     }
     
-    @PostMapping("/saveTransactionDetails")
+    @PutMapping("/saveTransactionDetails")
     public ResponseEntity<Transaction> saveTransactionDetails(@RequestBody Transaction transaction){
     	Transaction save = new Transaction();
     	try {
@@ -71,6 +73,7 @@ public class RewardPointsController {
 		}
         return new ResponseEntity<>(save,HttpStatus.OK);
     }
+	
     @GetMapping("/getCustomerDetails/{customerId}")
     public ResponseEntity<Customer> getCustomerDetailsByCustomerId(@PathVariable Long customerId){
     	Customer customer = new Customer();
@@ -81,6 +84,15 @@ public class RewardPointsController {
 			logger.error("exception in getCustomerDetailsByCustomerId {}",e);
 		}
         return new ResponseEntity<>(customer,HttpStatus.OK);
+    }
+    
+    @PostMapping("/updateCustomerDetails/{customerId}")
+    public void getCustomerDetails(@RequestBody Customer customer,@PathVariable Long customerId){
+    	Customer customerDb = rewardPointsService.getCustomerDetailsByCustomerId(customerId);
+    	if(customerDb != null) {
+    		customerDb.setCustomerName(customer.getCustomerName());
+    		rewardPointsService.saveCustomerDetails(customerDb);
+    	}
     }
     
     @GetMapping("/getTransactionDetailsByCustomerId/{customerId}")
