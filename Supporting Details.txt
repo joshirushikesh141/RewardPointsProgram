@@ -58,146 +58,125 @@ localhost:8080/api/saveTransactionDetails
 ----------------------------------------------
 TRANSACTION Table
 localhost:8080/api/saveAllTransactionDetails 
+
 [
 {
-    "TransactionId": 1,
     "customerId": 2,
     "transactionDate": "2024-11-28T14:23:00",
     "transactionAmount": 80
   },
   {
-    "TransactionId": 2,
     "customerId": 1,
     "transactionDate": "2024-10-10T12:45:00",
     "transactionAmount": 150
   },
   {
-    "TransactionId": 3,
     "customerId": 3,
     "transactionDate": "2024-12-22T08:30:00",
     "transactionAmount": 45
   },
   {
-    "TransactionId": 4,
     "customerId": 1,
     "transactionDate": "2024-09-15T10:00:00",
     "transactionAmount": 120
   },
   {
-    "TransactionId": 5,
     "customerId": 2,
     "transactionDate": "2024-11-28T14:23:00",
     "transactionAmount": 80
   },
   {
-    "TransactionId": 6,
     "customerId": 1,
     "transactionDate": "2024-10-10T12:45:00",
     "transactionAmount": 150
   },
   {
-    "TransactionId": 7,
     "customerId": 3,
     "transactionDate": "2024-12-22T08:30:00",
     "transactionAmount": 45
   },
   {
-    "TransactionId": 8,
     "customerId": 1,
     "transactionDate": "2024-09-15T10:00:00",
     "transactionAmount": 120
   },
   {
-    "TransactionId": 9,
     "customerId": 2,
     "transactionDate": "2024-12-05T14:00:00",
     "transactionAmount": 60
   },
   {
-    "TransactionId": 10,
     "customerId": 3,
     "transactionDate": "2024-11-15T13:30:00",
     "transactionAmount": 200
   },
   {
-    "TransactionId": 11,
     "customerId": 1,
     "transactionDate": "2024-12-01T11:00:00",
     "transactionAmount": 50
   },
   {
-    "TransactionId": 12,
     "customerId": 2,
     "transactionDate": "2024-10-20T16:45:00",
     "transactionAmount": 175
   },
   {
-    "TransactionId": 13,
     "customerId": 3,
     "transactionDate": "2024-11-10T09:30:00",
     "transactionAmount": 120
   },
   {
-    "TransactionId": 14,
     "customerId": 2,
     "transactionDate": "2024-12-10T15:10:00",
     "transactionAmount": 90
   },
   {
-    "TransactionId": 15,
     "customerId": 1,
     "transactionDate": "2024-09-25T13:00:00",
     "transactionAmount": 180
   },
   {
-    "TransactionId": 16,
     "customerId": 3,
     "transactionDate": "2024-12-15T07:50:00",
     "transactionAmount": 30
   },
   {
-    "TransactionId": 17,
     "customerId": 1,
     "transactionDate": "2024-11-05T12:10:00",
     "transactionAmount": 60
   },
   {
-    "TransactionId": 18,
     "customerId": 2,
     "transactionDate": "2024-10-30T14:40:00",
     "transactionAmount": 200
   },
   {
-    "TransactionId": 19,
     "customerId": 3,
     "transactionDate": "2024-12-25T17:25:00",
     "transactionAmount": 95
   },
   {
-    "TransactionId": 20,
     "customerId": 2,
     "transactionDate": "2024-11-20T16:00:00",
     "transactionAmount": 40
   },
   {
-    "TransactionId": 21,
     "customerId": 1,
     "transactionDate": "2024-12-30T10:30:00",
     "transactionAmount": 110
   },
   {
-    "TransactionId": 22,
     "customerId": 3,
     "transactionDate": "2024-11-30T18:00:00",
     "transactionAmount": 150
   },
   {
-    "TransactionId": 23,
     "customerId": 1,
     "transactionDate": "2024-09-05T09:00:00",
     "transactionAmount": 65
   }
 ]
+
 ===================================================
 GET Methods
 ------------
