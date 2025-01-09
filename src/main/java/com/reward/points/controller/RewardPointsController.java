@@ -2,7 +2,6 @@ package com.reward.points.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +22,6 @@ import com.reward.points.repository.CustomerRepository;
 import com.reward.points.repository.TransactionRepository;
 import com.reward.points.service.RewardPointsService;
 
-
 @RestController
 @RequestMapping("/api")
 public class RewardPointsController {
@@ -42,7 +40,7 @@ public class RewardPointsController {
     public ResponseEntity<Customer> saveCustomerDetails(@RequestBody Customer customer){
     	Customer save = new Customer();
     	try {
-    		save= customerRepository.save(customer);
+    		save  = rewardPointsService.saveCustomerDetails(customer);
     		logger.info("save {}",save);
 		} catch (Exception e) {
 			logger.error("exception in saveCustomerDetails {}",e);
@@ -54,7 +52,7 @@ public class RewardPointsController {
     public ResponseEntity<Transaction> saveTransactionDetails(@RequestBody Transaction transaction){
     	Transaction save = new Transaction();
     	try {
-    		save= transactionRepository.save(transaction);
+    		save = rewardPointsService.saveTransactionDetails(transaction);
     		logger.info("save {}",save);
 		} catch (Exception e) {
 			logger.error("exception in saveTransactionDetails {}",e);
@@ -66,7 +64,7 @@ public class RewardPointsController {
     public ResponseEntity<List<Transaction>> saveAllTransactionDetails(@RequestBody List<Transaction> transaction){
     	List<Transaction> save = new ArrayList<>();
     	try {
-    		save= transactionRepository.saveAll(transaction);
+    		save = rewardPointsService.saveAllTransactionDetails(transaction);
     		logger.info("save {}",save);
 		} catch (Exception e) {
 			logger.error("exception in saveAllTransactionDetails {}",e);
@@ -74,25 +72,33 @@ public class RewardPointsController {
         return new ResponseEntity<>(save,HttpStatus.OK);
     }
     @GetMapping("/getCustomerDetails/{customerId}")
-    public ResponseEntity<Customer> getCustomerDetailsByCustomerId(@PathVariable("customerId") Long customerId){
-        Optional<Customer> customer = customerRepository.findById(customerId);
-        logger.info("getCustomerDetailsByCustomerId customer {}",customer);
-        Customer customerNew = customer.orElseThrow(()-> new RuntimeException("Customer Not Found"));
-        return new ResponseEntity<>(customerNew,HttpStatus.OK);
+    public ResponseEntity<Customer> getCustomerDetailsByCustomerId(@PathVariable Long customerId){
+    	Customer customer = new Customer();
+    	try {
+    		customer = rewardPointsService.getCustomerDetailsByCustomerId(customerId);
+    		 logger.info("getCustomerDetailsByCustomerId customer {}",customer);
+		} catch (Exception e) {
+			logger.error("exception in getCustomerDetailsByCustomerId {}",e);
+		}
+        return new ResponseEntity<>(customer,HttpStatus.OK);
     }
     
     @GetMapping("/getTransactionDetailsByCustomerId/{customerId}")
-    public ResponseEntity<List<Transaction>> getTransactionDetailsByCustomerId(@PathVariable("customerId") Long customerId){
-        List<Transaction> findByCustomerId = transactionRepository.findByCustomerId(customerId);
-        logger.info("getTransactionDetailsByCustomerId transaction {}",findByCustomerId);
+    public ResponseEntity<List<Transaction>> getTransactionDetailsByCustomerId(@PathVariable Long customerId){
+    	 List<Transaction> findByCustomerId = new ArrayList<>();
+		 try {
+			 findByCustomerId = rewardPointsService.getTransactionDetailsByCustomerId(customerId);
+		     logger.info("getTransactionDetailsByCustomerId transaction {}",findByCustomerId);
+		} catch (Exception e) {
+			logger.error("exception in findByCustomerId {}",e);
+		}
         return new ResponseEntity<>(findByCustomerId,HttpStatus.OK);
     }
 
     @GetMapping("/rewards/{customerId}")
-    public ResponseEntity<Rewards> getRewardsByCustomerId(@PathVariable("customerId") Long customerId){
-        Optional<Customer> customer = customerRepository.findById(customerId);
-        Customer customerNew = customer.orElseThrow(()-> new RuntimeException("Customer Not Found"));
-        logger.info("getRewardsByCustomerId customerNew {}",customerNew);
+    public ResponseEntity<Rewards> getRewardsByCustomerId(@PathVariable Long customerId){
+    	Customer customer = rewardPointsService.getCustomerDetailsByCustomerId(customerId);
+        logger.info("getRewardsByCustomerId customer {}",customer);
         
         Rewards customerRewards = new Rewards();
         try {
