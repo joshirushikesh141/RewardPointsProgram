@@ -50,7 +50,7 @@ public class RewardPointsController {
         return new ResponseEntity<>(save,HttpStatus.OK);
     }
     
-    @PutMapping("/saveTransactionDetails")
+    @PostMapping("/saveTransactionDetails")
     public ResponseEntity<Transaction> saveTransactionDetails(@RequestBody Transaction transaction){
     	Transaction save = new Transaction();
     	try {
