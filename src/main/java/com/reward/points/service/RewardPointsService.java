@@ -8,7 +8,7 @@ import com.reward.points.model.Rewards;
 
 public interface RewardPointsService {
 
-	public Customer saveCustomerDetails(Customer customer);
+	public String saveCustomerDetails(Customer customer);
 	
 	public Customer getCustomerDetailsByCustomerId(Long customerId);
 
@@ -16,7 +16,13 @@ public interface RewardPointsService {
 	
 	public Rewards getRewardsByCustomerId(Long customerId);
 
-	public Transaction saveTransactionDetails(Transaction transaction);
+	public String saveTransactionDetails(Transaction transaction);
 
 	public List<Transaction> saveAllTransactionDetails(List<Transaction> transaction);
+
+	public String deleteCustomerDetails(Long customerId);
+
+	public Transaction getTransactionDetailsByTransactionId(Long transactionId);
+
+	public String deleteTransactionDetails(Long transactionId);
 }
