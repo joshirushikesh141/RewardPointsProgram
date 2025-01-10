@@ -27,5 +27,9 @@ Providing the link to view the video documentation
 https://drive.google.com/drive/folders/1VrVlmq0u723y-MQEo-B0UrkxrHAiN_8h?usp=drive_link
 
 
+ER Diagram
+https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Rewards.PNG
+
+
 
 
