@@ -14,6 +14,8 @@ To check code coverage EclEmma used.
 
 For testing Loggers are added.
 
+Spring security added for the authentication
+
 
 To test the application please go throuth the below link
 
