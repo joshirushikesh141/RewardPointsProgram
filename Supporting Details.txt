@@ -9,14 +9,14 @@ API's as below
 CUSTOMER
 -------------------------------------------
 POST
-localhost:8080/api/saveCustomerDetails
+localhost:8080/api/customerRegistration
 
 {
     "customerName": "Vidya"
 }
 -------------------------------------------
 GET
-localhost:8080/api/getCustomerDetails/3
+localhost:8080/api/getRegisteredCustomerDetailsById/3
 -------------------------------------------
 PUT
 localhost:8080/api/updateCustomerDetails/7
