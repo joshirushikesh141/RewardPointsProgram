@@ -34,13 +34,13 @@ public class RewardPointsServiceImpl implements RewardPointsService {
 	@Override
 	public String saveCustomerDetails(Customer customer) {
 		Customer save = customerRepository.save(customer);
-		return "Customer details saved/updated successfully having customer ID: "+save.getCustomerId();
+		return "Customer has been registered/updated successfully!! with customer ID: "+save.getCustomerId();
 	}
 
 	@Override
 	public String saveTransactionDetails(Transaction transaction) {
 		Transaction save = transactionRepository.save(transaction);
-		return "Transaction completed successfully having transaction ID: "+save.getTransactionId();
+		return "Transaction completed successfully!! with transaction ID: "+save.getTransactionId();
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class RewardPointsServiceImpl implements RewardPointsService {
 	}
 
 	@Override
-	public Customer getCustomerDetailsByCustomerId(Long customerId) {
+	public Customer getRegisteredCustomerDetailsByCustomerId(Long customerId) {
 		Optional<Customer> byId = customerRepository.findById(customerId);
 		Customer customer = byId.orElseThrow(()-> new CustomerNotFoundException("Customer Not Found"));
 		return customer;
@@ -111,15 +111,17 @@ public class RewardPointsServiceImpl implements RewardPointsService {
 
 		Rewards customerRewards = new Rewards();
 		customerRewards.setCustomerId(customerId);
+		customerRewards.setLastMonthTimeSpan(lastMonthTimestamp+ " to "+Timestamp.from(Instant.now()));
 		customerRewards.setLastMonthRewardPoints(lastMonthRewardPoints);
+		customerRewards.setLastSecondMonthTimeSpan(lastSecondMonthTimestamp+" to "+lastMonthTimestamp);
 		customerRewards.setLastSecondMonthRewardPoints(lastSecondMonthRewardPoints);
+		customerRewards.setLastThirdMonthTimeSpan(lastThirdMonthTimestamp+" to "+lastSecondMonthTimestamp);
 		customerRewards.setLastThirdMonthRewardPoints(lastThirdMonthRewardPoints);
 		customerRewards.setTotalRewards(totalRewardPoints);
 		logger.info("customerRewards Final Object: {}", customerRewards);
 
 		return customerRewards;
 	}
-
 	public Timestamp getMonthStartDate(int days) {
 		return Timestamp.valueOf(LocalDateTime.now().minusDays(days));
 	}
