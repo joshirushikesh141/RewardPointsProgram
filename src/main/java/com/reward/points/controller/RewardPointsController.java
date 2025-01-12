@@ -40,28 +40,28 @@ public class RewardPointsController {
     private static final Logger logger = LoggerFactory.getLogger(RewardPointsController.class);
     
     // Save Customer Details
-    @PostMapping("/saveCustomerDetails")
-    public ResponseEntity<String> saveCustomerDetails(@RequestBody Customer customer){
+    @PostMapping("/customerRegistration")
+    public ResponseEntity<String> customerRegistration(@RequestBody Customer customer){
     	String save = "";
     	try {
     		 save = rewardPointsService.saveCustomerDetails(customer);
     		logger.info("save {}",save);
 		} catch (Exception e) {
-			logger.error("exception in saveCustomerDetails {}",e);
+			logger.error("exception in customerRegistration {}",e);
 			return new ResponseEntity<>(Constants.SomethingWentWrong,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
         return new ResponseEntity<>(save,HttpStatus.OK);
     }
     
-    // Get Customer Details By customerId
-    @GetMapping("/getCustomerDetails/{customerId}")
-    public ResponseEntity<Customer> getCustomerDetailsByCustomerId(@PathVariable Long customerId){
+     // Get Customer Details By customerId
+    @GetMapping("/getRegisteredCustomerDetailsById/{customerId}")
+    public ResponseEntity<Customer> getRegisteredCustomerDetailsByCustomerId(@PathVariable Long customerId){
     	Customer customer = new Customer();
     	try {
-    		customer = rewardPointsService.getCustomerDetailsByCustomerId(customerId);
-    		logger.info("getCustomerDetailsByCustomerId customer {}",customer);
+    		customer = rewardPointsService.getRegisteredCustomerDetailsByCustomerId(customerId);
+    		logger.info("getRegisteredCustomerDetailsByCustomerId customer {}",customer);
 		} catch (Exception e) {
-			logger.error("exception in getCustomerDetailsByCustomerId {}",e);
+			logger.error("exception in getRegisteredCustomerDetailsByCustomerId {}",e);
 			return new ResponseEntity<>(customer,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
         return new ResponseEntity<>(customer,HttpStatus.OK);
@@ -73,7 +73,7 @@ public class RewardPointsController {
     	Customer customerDb = new Customer();
     	String saveCustomerDetails ="";
     	try {
-    		customerDb = rewardPointsService.getCustomerDetailsByCustomerId(customerId);
+    		customerDb = rewardPointsService.getRegisteredCustomerDetailsByCustomerId(customerId);
         	if(customerDb != null) {
         		customerDb.setCustomerName(customer.getCustomerName());
         		saveCustomerDetails = rewardPointsService.saveCustomerDetails(customerDb);
@@ -91,7 +91,7 @@ public class RewardPointsController {
     	Customer customerObj = new Customer();
     	String deleteCustomer = "";
     	try {
-    		customerObj = rewardPointsService.getCustomerDetailsByCustomerId(customerId);
+    		customerObj = rewardPointsService.getRegisteredCustomerDetailsByCustomerId(customerId);
         	if(customerObj != null) {
         		deleteCustomer = rewardPointsService.deleteCustomerDetails(customerId);
         	}
@@ -187,7 +187,7 @@ public class RewardPointsController {
     // Get Rewards By customerId
     @GetMapping("/rewards/{customerId}")
     public ResponseEntity<Rewards> getRewardsByCustomerId(@PathVariable Long customerId){
-    	Customer customer = rewardPointsService.getCustomerDetailsByCustomerId(customerId);
+    	Customer customer = rewardPointsService.getRegisteredCustomerDetailsByCustomerId(customerId);
         logger.info("getRewardsByCustomerId customer {}",customer);
         
         Rewards customerRewards = new Rewards();
