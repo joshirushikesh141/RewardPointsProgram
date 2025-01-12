@@ -1,9 +1,5 @@
 # RewardPointsProgram
 
-Reward Point Program Flow Diagram RewardPointsProgramFlowDiagram.PNG
-
-All the endpoints are mentioned in attached link plz check for your reference
-
 Used of JPA Repository.
 
 Database used as PostgreSQL/MySQL/H2.
@@ -18,6 +14,8 @@ For testing Loggers are added.
 
 Spring security added for the authentication
 
+Reward Point Program Flow Diagram 
+https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/RewardPointsProgramFlowDiagram.PNG
 
 To test the application please go throuth the below link
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Supporting%20Details.txt
