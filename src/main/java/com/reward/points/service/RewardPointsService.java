@@ -10,7 +10,7 @@ public interface RewardPointsService {
 
 	public String saveCustomerDetails(Customer customer);
 	
-	public Customer getCustomerDetailsByCustomerId(Long customerId);
+	public Customer getRegisteredCustomerDetailsByCustomerId(Long customerId);
 
 	public List<Transaction> getTransactionDetailsByCustomerId(Long customerId);
 	
