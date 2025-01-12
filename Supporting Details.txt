@@ -248,4 +248,9 @@ CREATE TABLE TRANSACTION (
 
 SELECT * FROM TRANSACTION;
 
+
+ALTER SEQUENCE customer_customer_id_seq RESTART WITH 1;
+ALTER SEQUENCE transaction_transaction_id_seq RESTART WITH 1;
+
 =============================================================
+
