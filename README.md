@@ -1,5 +1,7 @@
 # RewardPointsProgram
 
+Reward Point Program Flow Diagram RewardPointsProgramFlowDiagram.PNG
+
 All the endpoints are mentioned in attached link plz check for your reference
 
 Used of JPA Repository.
