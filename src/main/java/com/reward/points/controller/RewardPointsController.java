@@ -56,7 +56,7 @@ public class RewardPointsController {
      // Get Customer Details By customerId
     @GetMapping("/getRegisteredCustomerDetailsById/{customerId}")
     public ResponseEntity<Customer> getRegisteredCustomerDetailsByCustomerId(@PathVariable Long customerId){
-    	Customer customer = new Customer();
+    	Customer customer = null;
     	try {
     		customer = rewardPointsService.getRegisteredCustomerDetailsByCustomerId(customerId);
     		logger.info("getRegisteredCustomerDetailsByCustomerId customer {}",customer);
@@ -190,12 +190,13 @@ public class RewardPointsController {
     	Customer customer = rewardPointsService.getRegisteredCustomerDetailsByCustomerId(customerId);
         logger.info("getRewardsByCustomerId customer {}",customer);
         
-        Rewards customerRewards = new Rewards();
+        Rewards customerRewards = null;
         try {
         	customerRewards = rewardPointsService.getRewardsByCustomerId(customerId);
         	logger.info("customerRewards {}",customerRewards);
 		} catch (Exception e) {
 			logger.error("exception in getRewardsByCustomerId {}",e);
+			 return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
         return new ResponseEntity<>(customerRewards,HttpStatus.OK);
     }
