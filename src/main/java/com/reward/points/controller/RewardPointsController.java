@@ -28,7 +28,7 @@ import com.reward.points.service.RewardPointsService;
 @RestController
 @RequestMapping("/api")
 public class RewardPointsController {
-    @Autowired
+	 @Autowired
     RewardPointsService rewardPointsService;
 
     @Autowired
@@ -53,10 +53,10 @@ public class RewardPointsController {
         return new ResponseEntity<>(save,HttpStatus.OK);
     }
     
-     // Get Customer Details By customerId
+    // Get Customer Details By customerId
     @GetMapping("/getRegisteredCustomerDetailsById/{customerId}")
     public ResponseEntity<Customer> getRegisteredCustomerDetailsByCustomerId(@PathVariable Long customerId){
-    	Customer customer = null;
+    	Customer customer = new Customer();
     	try {
     		customer = rewardPointsService.getRegisteredCustomerDetailsByCustomerId(customerId);
     		logger.info("getRegisteredCustomerDetailsByCustomerId customer {}",customer);
@@ -70,7 +70,7 @@ public class RewardPointsController {
     // Update Customer Details By customerId
     @PutMapping("/updateCustomerDetails/{customerId}")
     public ResponseEntity<String> updateCustomerDetails(@RequestBody Customer customer,@PathVariable Long customerId){
-    	Customer customerDb = new Customer();
+    	Customer customerDb = null;
     	String saveCustomerDetails ="";
     	try {
     		customerDb = rewardPointsService.getRegisteredCustomerDetailsByCustomerId(customerId);
@@ -88,7 +88,7 @@ public class RewardPointsController {
     // Delete Customer Details By customerId
     @DeleteMapping("/deleteCustomerDetails/{customerId}")
     public ResponseEntity<String> deleteCustomerDetails(@PathVariable Long customerId){
-    	Customer customerObj = new Customer();
+    	Customer customerObj = null;
     	String deleteCustomer = "";
     	try {
     		customerObj = rewardPointsService.getRegisteredCustomerDetailsByCustomerId(customerId);
@@ -107,7 +107,18 @@ public class RewardPointsController {
     // Save Transaction Details -- Object
     @PostMapping("/saveTransactionDetails")
     public ResponseEntity<String> saveTransactionDetails(@RequestBody Transaction transaction){
+    	Customer isAvailableCustomerId = null;
     	String save = "";
+    	
+    	try {
+    		isAvailableCustomerId = rewardPointsService.getRegisteredCustomerDetailsByCustomerId(transaction.getCustomerId());
+    		logger.info("isAvailableCustomerId : {}",isAvailableCustomerId.getCustomerId());
+		} catch (Exception e) {
+			logger.error("exception in saveTransactionDetails {}",e);
+			return new ResponseEntity<>(Constants.CustomerNotFound,HttpStatus.NOT_FOUND);
+		}
+    	logger.info("isAvailableCustomerId : {}",isAvailableCustomerId.getCustomerId());
+    	
     	try {
     		save = rewardPointsService.saveTransactionDetails(transaction);
     		logger.info("save {}",save);
@@ -123,6 +134,14 @@ public class RewardPointsController {
     public ResponseEntity<List<Transaction>> saveAllTransactionDetails(@RequestBody List<Transaction> transaction){
     	List<Transaction> save = new ArrayList<>();
     	try {
+    		List<Customer> allCustomers = rewardPointsService.getAllCustomers();
+    		Set<Long> collect = allCustomers.stream().map(Customer::getCustomerId).collect(Collectors.toSet());
+    		
+    		for(Transaction txn: transaction) {
+    			if(!collect.contains(txn.getCustomerId())){
+    				throw new IllegalArgumentException("Customer with ID : " + txn.getCustomerId() + " does not exist...please verify all transactions");
+    			}
+    		}
     		save = rewardPointsService.saveAllTransactionDetails(transaction);
     		logger.info("save {}",save);
 		} catch (Exception e) {
@@ -149,10 +168,28 @@ public class RewardPointsController {
     // Update Transaction Details -- Object
     @PutMapping("/updateTransactionDetails/{transactionId}")
     public ResponseEntity<String> updateTransactionDetails(@RequestBody Transaction transaction,@PathVariable Long transactionId){
-    	Transaction transactionObj = new Transaction();
+    	Transaction transactionObj = null;
+    	Customer isAvailableCustomerId = null;
     	String save = "";
     	try {
     		transactionObj = rewardPointsService.getTransactionDetailsByTransactionId(transactionId);
+    		logger.info("transactionObj : {}",transactionObj.getTransactionId());
+		} catch (Exception e) {
+			logger.error("exception in updateTransactionDetails transactionObj {}",e);
+			return new ResponseEntity<>(Constants.TransactionNotFound,HttpStatus.NOT_FOUND);
+		}
+    	logger.info("isAvailableCustomerId : {}",transactionObj.getCustomerId());
+    	
+    	try {
+    		isAvailableCustomerId = rewardPointsService.getRegisteredCustomerDetailsByCustomerId(transaction.getCustomerId());
+    		logger.info("isAvailableCustomerId : {}",isAvailableCustomerId.getCustomerId());
+		} catch (Exception e) {
+			logger.error("exception in updateTransactionDetails isAvailableCustomerId {}",e);
+			return new ResponseEntity<>(Constants.CustomerNotFound,HttpStatus.NOT_FOUND);
+		}
+    	logger.info("isAvailableCustomerId : {}",isAvailableCustomerId.getCustomerId());
+    	
+    	try {
     		if(transactionObj != null) {
     			transactionObj.setCustomerId(transaction.getCustomerId());
     			transactionObj.setTransactionAmount(transaction.getTransactionAmount());
@@ -170,7 +207,7 @@ public class RewardPointsController {
     // Delete Transaction Details By customerId
     @DeleteMapping("/deleteTransactionDetails/{transactionId}")
     public ResponseEntity<String> deleteTransactionDetails(@PathVariable Long transactionId){
-    	Transaction transactionObj = new Transaction();
+    	Transaction transactionObj = null;
     	String deleteTransaction = "";
     	try {
     		transactionObj = rewardPointsService.getTransactionDetailsByTransactionId(transactionId);
@@ -196,7 +233,7 @@ public class RewardPointsController {
         	logger.info("customerRewards {}",customerRewards);
 		} catch (Exception e) {
 			logger.error("exception in getRewardsByCustomerId {}",e);
-			 return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(customerRewards,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
         return new ResponseEntity<>(customerRewards,HttpStatus.OK);
     }
