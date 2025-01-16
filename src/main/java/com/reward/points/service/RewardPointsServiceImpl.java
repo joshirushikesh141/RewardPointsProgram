@@ -122,6 +122,7 @@ public class RewardPointsServiceImpl implements RewardPointsService {
 
 		return customerRewards;
 	}
+
 	public Timestamp getMonthStartDate(int days) {
 		return Timestamp.valueOf(LocalDateTime.now().minusDays(days));
 	}
@@ -149,4 +150,9 @@ public class RewardPointsServiceImpl implements RewardPointsService {
 				+ (Constants.secondRewardLimit - Constants.firstRewardLimit));
 	}
 
+	@Override
+	public List<Customer> getAllCustomers() {
+		List<Customer> all = customerRepository.findAll();
+		return all;
+	}
 }
