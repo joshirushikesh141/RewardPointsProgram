@@ -1,5 +1,4 @@
 # RewardPointsProgram
-======================
 
 Reward Point Program Flow Diagram
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/RewardPointsProgramFlowDiagram.PNG
