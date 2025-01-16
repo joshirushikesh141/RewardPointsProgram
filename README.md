@@ -8,8 +8,7 @@ ER Diagram
 
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Rewards.PNG
 
-For Documentation Swagger UI has been Implemented.
-Please go through the below provided link to test it.
+Swagger UI Documentation
 
 http://localhost:8080/swagger-ui/index.html
 
