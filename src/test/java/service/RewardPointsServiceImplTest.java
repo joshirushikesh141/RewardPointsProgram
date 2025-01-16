@@ -30,8 +30,8 @@ import com.reward.points.service.RewardPointsServiceImpl;
 
 
 public class RewardPointsServiceImplTest {
-
-    @InjectMocks
+    
+@InjectMocks
     RewardPointsServiceImpl rewardPointsService;
     
     @Mock
@@ -147,9 +147,7 @@ public class RewardPointsServiceImplTest {
     @Test
     void testDeleteTransactionDetails() {
         Mockito.doNothing().when(transactionRepository).deleteById(Mockito.anyLong());
-
         String response = rewardPointsService.deleteTransactionDetails(1L);
-
         assertEquals("Transaction details has been deleted !!!", response);
     }
 
@@ -190,5 +188,5 @@ public class RewardPointsServiceImplTest {
         assertEquals(10L, rewardPointsService.calculateRewards(60.0));
         assertEquals(150L, rewardPointsService.calculateRewards(150.0));
     }
-
+    
 }
