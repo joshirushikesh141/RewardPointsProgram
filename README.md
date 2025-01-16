@@ -1,7 +1,7 @@
 # RewardPointsProgram
 
 Reward Point Program Flow Diagram
-https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/RewardPointsProgramFlowDiagram.PNG
+https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/RewardPointsProgramFlowDiagram.png
 
 ER Diagram
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Rewards.PNG
