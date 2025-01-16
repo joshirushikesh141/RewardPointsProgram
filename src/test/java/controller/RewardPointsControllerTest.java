@@ -24,8 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 public class RewardPointsControllerTest {
-
-    @InjectMocks
+ @InjectMocks
     private RewardPointsController rewardPointsController;
 
     @Mock
@@ -72,11 +71,18 @@ public class RewardPointsControllerTest {
     void testGetRegisteredCustomerDetailsByCustomerId_Failure() {
         Mockito.when(rewardPointsService.getRegisteredCustomerDetailsByCustomerId(Mockito.anyLong()))
                .thenThrow(new RuntimeException("Customer not found"));
+        
         ResponseEntity<Customer> response = rewardPointsController.getRegisteredCustomerDetailsByCustomerId(999L);
 
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
-        assertNull(response.getBody());
+        
+        Customer responseBody = response.getBody();
+        assertNotNull(responseBody);
+        assertNull(responseBody.getCustomerId());
+        assertNull(responseBody.getCustomerName());
+        assertNull(responseBody.getEmailId());
     }
+
 
     @Test
     void testUpdateCustomerDetails_Success() {
@@ -127,7 +133,13 @@ public class RewardPointsControllerTest {
     
     @Test
     void testSaveTransactionDetails_Success() {
-        Mockito.when(rewardPointsService.saveTransactionDetails(Mockito.any(Transaction.class))).thenReturn("Transaction saved successfully");
+        Customer existingCustomer = new Customer();
+        existingCustomer.setCustomerId(1L);
+
+        Mockito.when(rewardPointsService.getRegisteredCustomerDetailsByCustomerId(Mockito.anyLong()))
+               .thenReturn(existingCustomer);
+        Mockito.when(rewardPointsService.saveTransactionDetails(Mockito.any(Transaction.class)))
+               .thenReturn("Transaction saved successfully");
 
         ResponseEntity<String> response = rewardPointsController.saveTransactionDetails(transaction);
 
@@ -137,39 +149,60 @@ public class RewardPointsControllerTest {
 
     @Test
     void testSaveTransactionDetails_Failure() {
-        Mockito.when(rewardPointsService.saveTransactionDetails(Mockito.any(Transaction.class)))
-               .thenThrow(new RuntimeException("Something went wrong"));
+        Mockito.when(rewardPointsService.getRegisteredCustomerDetailsByCustomerId(Mockito.anyLong()))
+               .thenThrow(new RuntimeException("Customer not found"));
 
         ResponseEntity<String> response = rewardPointsController.saveTransactionDetails(transaction);
 
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
-        assertEquals(Constants.SomethingWentWrong, response.getBody());
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals(Constants.CustomerNotFound, response.getBody());
     }
+
 
     @Test
     void testSaveAllTransactionDetails_Success() {
         List<Transaction> transactions = new ArrayList<>();
+        Transaction transaction = new Transaction();
+        transaction.setCustomerId(1L); // Set an existing customer ID
         transactions.add(transaction);
 
+        List<Customer> customers = new ArrayList<>();
+        Customer customer = new Customer();
+        customer.setCustomerId(1L); // Mock a customer with the ID 1
+        customers.add(customer);
+
+        Mockito.when(rewardPointsService.getAllCustomers()).thenReturn(customers);
         Mockito.when(rewardPointsService.saveAllTransactionDetails(Mockito.anyList())).thenReturn(transactions);
+
         ResponseEntity<List<Transaction>> response = rewardPointsController.saveAllTransactionDetails(transactions);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(transactions, response.getBody());
     }
 
+
     @Test
     void testSaveAllTransactionDetails_Failure() {
         List<Transaction> transactions = new ArrayList<>();
+        Transaction transaction = new Transaction();
+        transaction.setCustomerId(1L);
         transactions.add(transaction);
 
+        List<Customer> customers = new ArrayList<>();
+        Customer customer = new Customer();
+        customer.setCustomerId(1L);
+        customers.add(customer);
+
+        Mockito.when(rewardPointsService.getAllCustomers()).thenReturn(customers);
         Mockito.when(rewardPointsService.saveAllTransactionDetails(Mockito.anyList()))
                .thenThrow(new RuntimeException("Bulk save failed"));
+
         ResponseEntity<List<Transaction>> response = rewardPointsController.saveAllTransactionDetails(transactions);
 
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
         assertTrue(response.getBody().isEmpty());
     }
+
 
     @Test
     void testGetTransactionDetailsByCustomerId_Success() {
@@ -198,7 +231,12 @@ public class RewardPointsControllerTest {
     @Test
     void testUpdateTransactionDetails_Success() {
         Transaction updatedTransaction = new Transaction(1L, 1L, new Date(), 200.0);
-        Mockito.when(rewardPointsService.getTransactionDetailsByTransactionId(Mockito.anyLong())).thenReturn(transaction);
+        Transaction existingTransaction = new Transaction(1L, 1L, new Date(), 100.0);
+        Customer existingCustomer = new Customer();
+        existingCustomer.setCustomerId(1L);
+
+        Mockito.when(rewardPointsService.getTransactionDetailsByTransactionId(Mockito.anyLong())).thenReturn(existingTransaction);
+        Mockito.when(rewardPointsService.getRegisteredCustomerDetailsByCustomerId(Mockito.anyLong())).thenReturn(existingCustomer);
         Mockito.when(rewardPointsService.saveTransactionDetails(Mockito.any(Transaction.class))).thenReturn("Transaction updated successfully");
 
         ResponseEntity<String> response = rewardPointsController.updateTransactionDetails(updatedTransaction, 1L);
@@ -210,14 +248,21 @@ public class RewardPointsControllerTest {
     @Test
     void testUpdateTransactionDetails_Failure() {
         Transaction updatedTransaction = new Transaction(1L, 1L, new Date(), 200.0);
+        Customer existingCustomer = new Customer();
+        existingCustomer.setCustomerId(1L);
+
         Mockito.when(rewardPointsService.getTransactionDetailsByTransactionId(Mockito.anyLong()))
                .thenThrow(new RuntimeException("Transaction not found"));
+
+        Mockito.lenient().when(rewardPointsService.getRegisteredCustomerDetailsByCustomerId(Mockito.anyLong())).thenReturn(existingCustomer);
 
         ResponseEntity<String> response = rewardPointsController.updateTransactionDetails(updatedTransaction, 999L);
 
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-        assertEquals(Constants.SomethingWentWrong, response.getBody());
+        assertEquals(Constants.TransactionNotFound, response.getBody());
     }
+
+
 
     @Test
     void testDeleteTransactionDetails_Success() {
