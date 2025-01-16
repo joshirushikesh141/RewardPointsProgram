@@ -24,4 +24,26 @@ public class SecurityConfig {
             .csrf().disable();  // Disable CSRF for testing purposes. Use proper CSRF protection in production.
         return http.build();
     }
+
+//    @Bean 
+//    public UserDetailsService userDetailsService() {
+//    	UserDetails user1 = User.withDefaultPasswordEncoder() 
+//    			.username("Vinay") 
+//    			.password("password1") 
+//    			.roles("USER") 
+//    			.build(); 
+//    	UserDetails user2 = User.withDefaultPasswordEncoder() 
+//    			.username("Rahul") 
+//    			.password("password2") 
+//    			.roles("USER") 
+//    			.build(); 
+//    	UserDetails user3 = User.withDefaultPasswordEncoder() 
+//    			.username("Priya") 
+//    			.password("password3") 
+//    			.roles("USER") 
+//    			.build(); 
+//    	
+//    	return new InMemoryUserDetailsManager(user1, user2, user3);
+//    }
+    
 }
