@@ -40,7 +40,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- Database Connection Dependencies -->
 		<!--<dependency>
 			<groupId>com.mysql</groupId>
@@ -52,12 +52,14 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>-->
+
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>42.3.1</version>
 		</dependency>
-		
+
+
 		<!-- JPA Repository Dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -81,10 +83,11 @@
 		</dependency>
 
 		<!-- Authentication Dependencies -->
-		<!--<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>-->
+		</dependency>
+
 
 		<!--Swagger-->
 		<!--https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
@@ -93,6 +96,13 @@
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.8.3</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>7.0.1.Final</version>
+		</dependency>
+
 
 	</dependencies>
 
