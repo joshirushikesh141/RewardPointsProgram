@@ -15,14 +15,16 @@ public interface RewardPointsService {
 	public List<Transaction> getTransactionDetailsByCustomerId(Long customerId);
 	
 	public Rewards getRewardsByCustomerId(Long customerId);
+	
+	public String deleteCustomerDetails(Long customerId);
 
 	public String saveTransactionDetails(Transaction transaction);
 
 	public List<Transaction> saveAllTransactionDetails(List<Transaction> transaction);
 
-	public String deleteCustomerDetails(Long customerId);
-
 	public Transaction getTransactionDetailsByTransactionId(Long transactionId);
 
 	public String deleteTransactionDetails(Long transactionId);
+	
+	public List<Customer> getAllCustomers();
 }
