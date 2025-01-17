@@ -254,3 +254,29 @@ ALTER SEQUENCE transaction_transaction_id_seq RESTART WITH 1;
 
 =============================================================
 
+SOLID Principle Implemented
+
+S- Single Responsibility Principle
+A class should have one single responsibility (or multiple tasks/responibilities create multiple classes)
+
+O- Open for Extension but Closed for Modification Principle(Open/Close Principle)
+For new/extra functionality create new classes and extends/implements it with the previous class/interface (ie. don't do any changes in previouly tested classes/interfaces)
+it is mostly done in production phase to avoid bugs/issues.
+
+L- Liskov Substitution principle
+Class B is subtype of class A then we should be able to replace object of A with B without breaking the behaviour of the program.
+this should work when the subclass(B) extends the capability of parent class(A) and should not narrow it down.
+eg - Bike, Bicycle, Car and the methods are turnOnENgine() and accelerate()
+
+I- Interface Segmented Principle
+Interfaces should be such that the client (class implementing that interface) should not implement unnecessory methods that they do not need.
+eg - class waiter implements restaurantEmployee interface having methods like washDishes(), serveCustomer(), cookFood();
+insted above we can create two seperate interfaces as waiterInterface, chefInterface, HelperInterface with respective methods so that
+waiter class,chef class and helper class can implement the required methods. 
+
+D- Depndency Inversion Principle
+Class should depend on interfaces rather than concrete classes
+using this loose coupling occurs, hence we can use multiple methods or we can change use of the methods are per the requirement 
+
+
+
