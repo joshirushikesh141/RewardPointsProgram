@@ -6,7 +6,7 @@ https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/RewardPointsP
 
 ER Diagram
 
-https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Rewards.PNG
+https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Rewards%20ERD.png
 
 Swagger UI Documentation
 
