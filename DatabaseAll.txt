@@ -1,0 +1,90 @@
+Database used as PostgreSQL/MySQL/H2.
+Check details provided below to use any of above database as per the convinience.
+
+1) CONNECTIONS:
+
+pom.xml & application.properties file
+================================================
+H2 Database
+
+We can also use h2 console if needed as below.
+http://localhost:8080/h2-console
+
+<dependency>
+	<groupId>com.h2database</groupId>
+	<artifactId>h2</artifactId>
+	<scope>runtime</scope>
+ </dependency>
+
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.h2.console.enabled=true
+=============================================================
+MySQL Database
+
+<dependency>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+      <scope>runtime</scope>
+</dependency>
+
+spring.datasource.url=jdbc:mysql://localhost:3306/rewards
+spring.datasource.username=root
+spring.datasource.password=123
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+==============================================================
+PostgresSQL
+
+<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.3.1</version>
+</dependency>
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/rewards
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+====================================================================
+
+
+2) SQL
+Note: tables will be auto generated beacause of JPA but if getting any issue use below queries.
+Also provided queries to reset the auto incremented values (if required while testing)
+
+SQL Queries
+--------------------------------------------
+
+SHOW DATABASES;
+CREATE DATABASE rewards;
+USE rewards;
+
+SHOW TABLES;
+
+CREATE TABLE CUSTOMER (
+    CUSTOMER_ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    CUSTOMER_NAME VARCHAR(255) NOT NULL,
+    EMAIL_ID VARCHAR(255)
+);
+SELECT * FROM CUSTOMER;
+
+CREATE TABLE TRANSACTION (
+    TRANSACTION_ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    CUSTOMER_ID BIGINT NOT NULL,
+    TRANSACTION_DATE DATE NOT NULL,
+    AMOUNT DOUBLE NOT NULL,
+    FOREIGN KEY (CUSTOMER_ID) REFERENCES CUSTOMER(CUSTOMER_ID)
+);
+
+SELECT * FROM TRANSACTION;
+
+
+ALTER SEQUENCE customer_customer_id_seq RESTART WITH 1;
+ALTER SEQUENCE transaction_transaction_id_seq RESTART WITH 1;
+
+=============================================================
