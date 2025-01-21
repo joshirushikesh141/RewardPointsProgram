@@ -7,6 +7,16 @@ A customer receives 2 points for every dollar spent over $100 in each transactio
 Given a record of every transaction during a three month period, calculate the reward points earned for each customer per month and total.
 
 #
+<h3>Summary</h3>
+
+As per the problem statement, I have created the springboot application program to calculate the reward points of a customer.
+In which I have created multiple endpoints which will helpout to work with the data.
+Created testcases,handled exceptions and so on. Also applied spring secutity to secure the data.
+
+For better undersatnding, the Project Flow Diagram and ER Diagram attached in below links.
+To test project, provided all the required data in last link and also can be tested using Swagger UI.
+
+#
 
 <h3>Technology Used</h3>
 <ul>
