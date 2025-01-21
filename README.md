@@ -35,7 +35,7 @@ https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Rewards%20ERD
 
 http://localhost:8080/swagger-ui/index.html
 
-<h3>Database Details/Data</h3>
+<h3>Database Details</h3>
 
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Supporting%20Details.txt
 
