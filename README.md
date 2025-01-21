@@ -24,7 +24,7 @@ All the necessary data to test the application provided in the last link, and th
   <li>Spring Data JPA</li>
   <li>PostgreSQL/MySQL/H2</li>
   <li>jUnit</li>
-  <li>Mockoto</li>
+  <li>Mockito</li>
   <li>Eclemma</li>
   <li>Spring Secutity</li>
   <li>Swagger UI</li>
