@@ -9,12 +9,12 @@ Given a record of every transaction during a three month period, calculate the r
 #
 <h3>Summary</h3>
 
-As per the problem statement, I have created the springboot application program to calculate the reward points of a customer.
-In which I have created multiple endpoints which will helpout to work with the data.
-Created testcases,handled exceptions and so on. Also applied spring secutity to secure the data.
+In response to the problem statement, I have developed a Spring Boot application to calculate customer reward points.
+This application includes multiple endpoints to efficiently manage the data.
+Additionally, I have created test cases, handled exceptions, and implemented Spring Security to ensure data protection.
 
-For better undersatnding, the Project Flow Diagram and ER Diagram attached in below links.
-To test project, provided all the required data in last link and also can be tested using Swagger UI.
+For better understanding, the Flow Diagram and ER Diagram are provided in the links below.
+All the necessary data to test the application provided in the last link, and the project can also be tested using Swagger UI.
 
 #
 
