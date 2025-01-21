@@ -6,18 +6,24 @@ A customer receives 2 points for every dollar spent over $100 in each transactio
 (e.g. a $120 purchase = 2x$20 + 1x$50 = 90 points).
 Given a record of every transaction during a three month period, calculate the reward points earned for each customer per month and total.
 
+#
+
 <h3>Technology Used</h3>
-Spring Boot
-Spring Data JPA
-PostgreSQL/MySQL/H2
-jUnit
-Mockoto
-Eclemma
-Spring Secutity
-Swagger
+<ul>
+  <li>Spring Boot</li>
+  <li>Spring Data JPA</li>
+  <li>PostgreSQL/MySQL/H2</li>
+  <li>jUnit</li>
+  <li>Mockoto</li>
+  <li>Eclemma</li>
+  <li>Spring Secutity</li>
+  <li>Swagger UI</li>
+</ul>
 
+#
 
-<h3>Reward Point Program Flow Diagram</h3>
+<h2>Important Links</h2>
+<h3>Flow Diagram</h3>
 
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/RewardPointsProgramFlowDiagram.png
 
@@ -33,21 +39,6 @@ http://localhost:8080/swagger-ui/index.html
 
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Supporting%20Details.txt
 
-----------------------------------------------------------------------------------------------------------
-
-Used of JPA Repository.
-
-Database used as PostgreSQL/MySQL/H2.
-
-Also provided all the details to use PostgreSQL/MySQL/H2 any of these database as per the convinience.
-
-For unit test cases jUnit used.
-
-To check code coverage EclEmma used.
-
-For testing Loggers are added.
-
-Spring security added for the authentication
 
 ---------------------------------------------------------------------------------------------------------
 
