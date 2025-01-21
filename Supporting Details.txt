@@ -1,5 +1,5 @@
 Database used as MySQL/H2
-Below are the API's to test
+Below are the API's to test with data
 
 =======================================================
 
@@ -234,7 +234,8 @@ SHOW TABLES;
 
 CREATE TABLE CUSTOMER (
     CUSTOMER_ID BIGINT AUTO_INCREMENT PRIMARY KEY,
-    CUSTOMER_NAME VARCHAR(255) NOT NULL
+    CUSTOMER_NAME VARCHAR(255) NOT NULL,
+    EMAIL_ID VARCHAR(255)
 );
 SELECT * FROM CUSTOMER;
 
