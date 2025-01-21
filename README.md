@@ -23,23 +23,23 @@ Given a record of every transaction during a three month period, calculate the r
 #
 
 <h2>Important Links</h2>
-<h3>Flow Diagram</h3>
+<h4>Flow Diagram</h4>
 
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/RewardPointsProgramFlowDiagram.png
 
-<h3>ER Diagram</h3>
+<h4>ER Diagram</h4>
 
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Rewards%20ERD.png
 
-<h3>Swagger UI Documentation</h3>
+<h4>Swagger UI Documentation</h4>
 
 http://localhost:8080/swagger-ui/index.html
 
-<h3>Database Details</h3>
+<h4>Database Details</h4>
 
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/DatabaseAll.txt
 
-<h3>APIs & Data</h3>
+<h4>APIs & Data</h4>
 
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Supporting%20Details.txt
 
