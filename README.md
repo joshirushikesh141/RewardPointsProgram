@@ -37,6 +37,10 @@ http://localhost:8080/swagger-ui/index.html
 
 <h3>Database Details</h3>
 
+https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/DatabaseAll.txt
+
+<h3>APIs & Data</h3>
+
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Supporting%20Details.txt
 
 
