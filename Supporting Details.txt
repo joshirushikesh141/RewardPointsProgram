@@ -279,5 +279,23 @@ D- Depndency Inversion Principle
 Class should depend on interfaces rather than concrete classes
 using this loose coupling occurs, hence we can use multiple methods or we can change use of the methods are per the requirement 
 
+=============================================================================================================================================
+
+Used of JPA Repository.
+
+Database used as PostgreSQL/MySQL/H2.
+
+Also provided all the details to use PostgreSQL/MySQL/H2 any of these database as per the convinience.
+
+For unit test cases jUnit used.
+
+To check code coverage EclEmma used.
+
+For testing Loggers are added.
+
+Spring security added for the authentication
+
+==============================================================================================================================================
+
 
 
