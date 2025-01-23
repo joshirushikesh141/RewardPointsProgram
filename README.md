@@ -14,7 +14,7 @@ This application includes multiple endpoints to efficiently manage the data.
 Additionally, I have created test cases, handled exceptions, and implemented Spring Security to ensure data protection.
 
 For better understanding, the Flow Diagram and ER Diagram are provided in the links below.
-All the necessary data to test the application provided in the last link, and the project can also be tested using Swagger UI.
+All the necessary data to test the application provided in the below links, and the project can also be tested using Swagger UI.
 
 #
 
