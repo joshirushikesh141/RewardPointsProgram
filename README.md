@@ -22,11 +22,12 @@ All the necessary data to test the application provided in the last link, and th
 <ul>
   <li>Spring Boot</li>
   <li>Spring Data JPA</li>
-  <li>PostgreSQL/MySQL/H2</li>
+  <li>Spring Secutity</li>
+  <li>PostgreSQL/MySQL/H2 Database</li>
   <li>jUnit</li>
   <li>Mockito</li>
   <li>Eclemma</li>
-  <li>Spring Secutity</li>
+  <li>Postman</li>
   <li>Swagger UI</li>
 </ul>
 
@@ -41,17 +42,17 @@ https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/RewardPointsP
 
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Rewards%20ERD.png
 
-<h4>Swagger UI Documentation</h4>
-
-http://localhost:8080/swagger-ui/index.html
-
 <h4>Database Details</h4>
 
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/DatabaseAll.txt
 
-<h4>APIs & Data</h4>
+<h4>APIs & Data to test</h4>
 
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Supporting%20Details.txt
+
+<h4>Swagger UI Documentation</h4>
+
+http://localhost:8080/swagger-ui/index.html
 
 
 ---------------------------------------------------------------------------------------------------------
