@@ -21,7 +21,7 @@ import com.reward.points.repository.CustomerRepository;
 import com.reward.points.repository.TransactionRepository;
 
 /**
- * This is a Implementation of Service interface.
+ * This is an implementation class of reward point service interface.
  * The business logic is written here for customer details, transactions, and rewards.
  *
  * @see Customer
