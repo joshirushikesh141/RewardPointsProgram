@@ -7,6 +7,7 @@ Postman
 ======================================================================
 
 
+
 # Run application using below steps :
 ----------------------------------------
 STEP 1:
@@ -36,6 +37,8 @@ STEP 5:
 Run the project and and test it in Postman or on SwaggerUI.
 http://localhost:8080/swagger-ui/index.html
 -----------------------------------------------------------------------------------
+
+
 
 NOTE: To test on postman tool, I have provided all the required details and dummy data as below.
 
