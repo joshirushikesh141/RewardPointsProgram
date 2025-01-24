@@ -1,27 +1,9 @@
-Database used as PostgreSQL/MySQL/H2.
+Database used as PostgreSQL/MySQL.
 Check details provided below to use any of above database as per the convinience.
 
 1) CONNECTIONS:
 
 pom.xml & application.properties file
-================================================
-H2 Database
-
-We can also use h2 console if needed as below.
-http://localhost:8080/h2-console
-
-<dependency>
-	<groupId>com.h2database</groupId>
-	<artifactId>h2</artifactId>
-	<scope>runtime</scope>
- </dependency>
-
-spring.datasource.url=jdbc:h2:mem:testdb
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=password
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-spring.h2.console.enabled=true
 =============================================================
 MySQL Database
 
