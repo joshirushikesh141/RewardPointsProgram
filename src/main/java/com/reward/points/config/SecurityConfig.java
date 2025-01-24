@@ -25,25 +25,25 @@ public class SecurityConfig {
         return http.build();
     }
 
-//    @Bean 
-//    public UserDetailsService userDetailsService() {
-//    	UserDetails user1 = User.withDefaultPasswordEncoder() 
-//    			.username("Vinay") 
-//    			.password("password1") 
-//    			.roles("USER") 
-//    			.build(); 
-//    	UserDetails user2 = User.withDefaultPasswordEncoder() 
-//    			.username("Rahul") 
-//    			.password("password2") 
-//    			.roles("USER") 
-//    			.build(); 
-//    	UserDetails user3 = User.withDefaultPasswordEncoder() 
-//    			.username("Priya") 
-//    			.password("password3") 
-//    			.roles("USER") 
-//    			.build(); 
-//    	
-//    	return new InMemoryUserDetailsManager(user1, user2, user3);
-//    }
+   @Bean 
+   public UserDetailsService userDetailsService() {
+   	UserDetails user1 = User.withDefaultPasswordEncoder() 
+   			.username("rushikesh") 
+   			.password("rushikesh") 
+   			.roles("USER") 
+   			.build(); 
+   	UserDetails user2 = User.withDefaultPasswordEncoder() 
+   			.username("admin") 
+   			.password("admin") 
+   			.roles("USER") 
+   			.build(); 
+   	UserDetails user3 = User.withDefaultPasswordEncoder() 
+   			.username("user") 
+   			.password("user") 
+   			.roles("USER") 
+   			.build(); 
+   	
+   	return new InMemoryUserDetailsManager(user1, user2, user3);
+   }
     
 }
