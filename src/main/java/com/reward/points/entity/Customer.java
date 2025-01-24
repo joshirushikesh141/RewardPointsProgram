@@ -7,17 +7,30 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+
+/**
+This class represents a Customer entity with basic attributes. 
+*/
 @Entity
 @Table(name = "CUSTOMER")
 public class Customer {
-     @Id
+    /**
+     customerId is a unique identifier and primery key
+    */
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CUSTOMER_ID")
     private Long customerId;
-    
+	
+    /**
+     customerName is a name of the customer
+    */
     @Column(name = "CUSTOMER_NAME")
     private String customerName;
-    
+
+     /**
+     emailId is an email of the customer
+    */
     @Column(name = "EMAIL_ID")
     private String emailId;
 
