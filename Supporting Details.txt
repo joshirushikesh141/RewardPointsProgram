@@ -2,8 +2,15 @@ Database used as MySQL/H2
 Below are the API's to test with data
 
 NOTE: To test the API's the default authentication is as below
-Username: Rushikesh
-Password: Rushikesh
+Username: rushikesh
+Password: rushikesh
+
+some other user provided are
+Username: admin
+Password: admin
+and
+Username: user
+Password: user
 Provision given to update/add multiple username and password as per the convinience.
 
 =======================================================
