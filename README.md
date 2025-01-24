@@ -49,10 +49,6 @@ https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Rewards%20ERD
 
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/DatabaseAll.txt
 
-<h4>APIs & Data to test</h4>
-
-https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Supporting%20Details.txt
-
 <h4>Swagger UI Documentation</h4>
 
 http://localhost:8080/swagger-ui/index.html
