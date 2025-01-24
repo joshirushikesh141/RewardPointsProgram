@@ -6,9 +6,20 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
+/**
+ * Configuration class for Basic Spring Security While accesing the data.
+ * Defines the security filter chain and user details service.
+ */
 @Configuration
 public class SecurityConfig {
 
+    /**
+     * Below method configures the security filter chain.
+     * 
+     * @param http the HttpSecurity object to configure
+     * @return the configured SecurityFilterChain
+     * @throws Exception if an error occurs while configuring security
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -25,6 +36,11 @@ public class SecurityConfig {
         return http.build();
     }
 
+    /**
+     * Below method configures an authenticationb details with predefined users.
+     * 
+     * @return the configured UserDetailsService
+     */
    @Bean 
    public UserDetailsService userDetailsService() {
    	UserDetails user1 = User.withDefaultPasswordEncoder() 
