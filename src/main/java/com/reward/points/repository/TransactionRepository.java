@@ -8,6 +8,14 @@ import org.springframework.stereotype.Repository;
 
 import com.reward.points.entity.Transaction;
 
+/**
+ * Repository interface for performing CRUD operations on the Transaction entity.
+ * Extends JpaRepository to provide methods for working with Transaction.
+ * 
+ * @see JpaRepository
+ * @see Transaction
+ */
+
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 	List<Transaction> findByCustomerId(Long customerId);
