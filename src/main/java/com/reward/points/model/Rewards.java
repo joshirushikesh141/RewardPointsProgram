@@ -1,5 +1,8 @@
 package com.reward.points.model;
 
+/**
+This class represents a Rewards model with basic attributes. 
+*/
 public class Rewards {
 	private long customerId;
 	private String lastMonthTimeSpan;
