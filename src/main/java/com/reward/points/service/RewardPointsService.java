@@ -6,6 +6,15 @@ import com.reward.points.entity.Customer;
 import com.reward.points.entity.Transaction;
 import com.reward.points.model.Rewards;
 
+/**
+ * This is a Service interface for managing reward points operations.
+ * Provides methods for handling customer details, transactions, and rewards.
+ *
+ * @see Customer
+ * @see Transaction
+ * @see Rewards
+ */
+
 public interface RewardPointsService {
 
 	public String saveCustomerDetails(Customer customer);
