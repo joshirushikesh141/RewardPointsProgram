@@ -37,14 +37,14 @@ Run the project and and test it in Postman or on SwaggerUI.
 http://localhost:8080/swagger-ui/index.html
 -----------------------------------------------------------------------------------
 
-NOTE: To test on postman I have provided all the required details and dummy data as below.
+NOTE: To test on postman tool, I have provided all the required details and dummy data as below.
 
-===========================================================================================
+=================================================================================================
 
 API's as below
 ---------------------
 
-CUSTOMER
+# CUSTOMER
 -------------------------------------------
 POST
 localhost:8080/api/customerRegistration
@@ -67,7 +67,7 @@ localhost:8080/api/deleteCustomerDetails/8
 -------------------------------------------
 
 
-TRANSACTION
+# TRANSACTION
 -------------------------------------------
 POST
 localhost:8080/api/saveTransactionDetails
@@ -104,7 +104,7 @@ localhost:8080/api/deleteTransactionDetails/61
 
 
 
-REWARDS
+# REWARDS
 -------------------------------------------
 GET
 localhost:8080/api/rewards/2
