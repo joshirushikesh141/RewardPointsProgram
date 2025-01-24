@@ -27,6 +27,8 @@ import com.reward.points.repository.TransactionRepository;
  * @see Customer
  * @see Transaction
  * @see Rewards
+ * @see CustomerRepository
+ * @see TransactionRepository
  */
 
 @Service
