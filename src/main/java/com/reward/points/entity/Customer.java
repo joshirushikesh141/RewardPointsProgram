@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 
 /**
-This class represents a Customer entity with basic attributes. 
+*This class represents a Customer entity with basic attributes. 
 */
 @Entity
 @Table(name = "CUSTOMER")
