@@ -20,6 +20,15 @@ import com.reward.points.model.Rewards;
 import com.reward.points.repository.CustomerRepository;
 import com.reward.points.repository.TransactionRepository;
 
+/**
+ * This is a Implementation of Service interface.
+ * The business logic is written here for customer details, transactions, and rewards.
+ *
+ * @see Customer
+ * @see Transaction
+ * @see Rewards
+ */
+
 @Service
 public class RewardPointsServiceImpl implements RewardPointsService {
 
