@@ -9,20 +9,35 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+This class represents a Transaction entity with basic attributes. 
+*/
 @Entity
 @Table(name = "TRANSACTION")
 public class Transaction {
+    /**
+    transactionId is a unique identifier and primery key
+    */
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     @Column(name = "TRANSACTION_ID")
     private Long transactionId;
 
+    /**
+    customerId is a ID of the customer and foreignkey of transaction
+    */
     @Column(name="CUSTOMER_ID")
     private Long customerId;
 
+    /**
+    transactionDate is a date of transaction done
+    */
     @Column(name = "TRANSACTION_DATE")
     private Date transactionDate;
 
+    /**
+    transactionAmount is an amount of transaction done
+    */
     @Column(name = "AMOUNT")
     private Double transactionAmount;
 
