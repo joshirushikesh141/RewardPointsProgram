@@ -25,6 +25,15 @@ import com.reward.points.repository.CustomerRepository;
 import com.reward.points.repository.TransactionRepository;
 import com.reward.points.service.RewardPointsService;
 
+/**
+ * Controller class for handling customer, transactions and rewads related HTTP requests.
+ * Provides endpoints for creating, retrieving, updating, and deleting the details.
+ * 
+ * @see rewardPointsService
+ * @see customerRepository
+ * @see transactionRepository
+ */
+
 @RestController
 @RequestMapping("/api")
 public class RewardPointsController {
@@ -38,8 +47,9 @@ public class RewardPointsController {
     TransactionRepository transactionRepository;
     
     private static final Logger logger = LoggerFactory.getLogger(RewardPointsController.class);
-    
-    // Save Customer Details
+    /**
+    * Save Customer Details
+    */
     @PostMapping("/customerRegistration")
     public ResponseEntity<String> customerRegistration(@RequestBody Customer customer){
     	String save = "";
@@ -52,8 +62,10 @@ public class RewardPointsController {
 		}
         return new ResponseEntity<>(save,HttpStatus.OK);
     }
-    
-    // Get Customer Details By customerId
+	
+    /**
+    * Get Customer Details By customerId
+    */
     @GetMapping("/getRegisteredCustomerDetailsById/{customerId}")
     public ResponseEntity<Customer> getRegisteredCustomerDetailsByCustomerId(@PathVariable Long customerId){
     	Customer customer = new Customer();
@@ -66,8 +78,10 @@ public class RewardPointsController {
 		}
         return new ResponseEntity<>(customer,HttpStatus.OK);
     }
-    
-    // Update Customer Details By customerId
+
+    /**
+    * Update Customer Details By customerId
+    */
     @PutMapping("/updateCustomerDetails/{customerId}")
     public ResponseEntity<String> updateCustomerDetails(@RequestBody Customer customer,@PathVariable Long customerId){
     	Customer customerDb = null;
@@ -84,8 +98,10 @@ public class RewardPointsController {
 		}
     	return new ResponseEntity<>(saveCustomerDetails,HttpStatus.OK);
     }
-    
-    // Delete Customer Details By customerId
+	
+    /**
+    * Delete Customer Details By customerId
+    */
     @DeleteMapping("/deleteCustomerDetails/{customerId}")
     public ResponseEntity<String> deleteCustomerDetails(@PathVariable Long customerId){
     	Customer customerObj = null;
@@ -102,9 +118,9 @@ public class RewardPointsController {
     	return new ResponseEntity<>(deleteCustomer,HttpStatus.OK);
     }
     
-    
-    
-    // Save Transaction Details -- Object
+    /**
+    * Save Transaction Details -- Object
+    */
     @PostMapping("/saveTransactionDetails")
     public ResponseEntity<String> saveTransactionDetails(@RequestBody Transaction transaction){
     	Customer isAvailableCustomerId = null;
@@ -128,8 +144,10 @@ public class RewardPointsController {
 		}
         return new ResponseEntity<>(save,HttpStatus.OK);
     }
-    
-    // Save Transaction Details List -- List of Object
+
+    /**
+    * Save Transaction Details List -- List of Object
+    */
     @PostMapping("/saveAllTransactionDetails")
     public ResponseEntity<List<Transaction>> saveAllTransactionDetails(@RequestBody List<Transaction> transaction){
     	List<Transaction> save = new ArrayList<>();
@@ -150,8 +168,10 @@ public class RewardPointsController {
 		}
         return new ResponseEntity<>(save,HttpStatus.OK);
     }
-    
-    // Get Transaction Details By customerId
+
+    /**
+    * Get Transaction Details By customerId
+    */
     @GetMapping("/getTransactionDetailsByCustomerId/{customerId}")
     public ResponseEntity<List<Transaction>> getTransactionDetailsByCustomerId(@PathVariable Long customerId){
     	 List<Transaction> findByCustomerId = new ArrayList<>();
@@ -164,8 +184,10 @@ public class RewardPointsController {
 		}
         return new ResponseEntity<>(findByCustomerId,HttpStatus.OK);
     }
-    
-    // Update Transaction Details -- Object
+
+    /**
+    * Update Transaction Details -- Object
+    */
     @PutMapping("/updateTransactionDetails/{transactionId}")
     public ResponseEntity<String> updateTransactionDetails(@RequestBody Transaction transaction,@PathVariable Long transactionId){
     	Transaction transactionObj = null;
@@ -203,8 +225,10 @@ public class RewardPointsController {
 		}
         return new ResponseEntity<>(save,HttpStatus.OK);
     }
-    
-    // Delete Transaction Details By customerId
+
+    /**
+    * Delete Transaction Details By customerId
+    */
     @DeleteMapping("/deleteTransactionDetails/{transactionId}")
     public ResponseEntity<String> deleteTransactionDetails(@PathVariable Long transactionId){
     	Transaction transactionObj = null;
@@ -221,7 +245,9 @@ public class RewardPointsController {
     	return new ResponseEntity<>(deleteTransaction,HttpStatus.OK);
     }
 
-    // Get Rewards By customerId
+    /**
+    * Get Rewards By customerId
+    */
     @GetMapping("/rewards/{customerId}")
     public ResponseEntity<Rewards> getRewardsByCustomerId(@PathVariable Long customerId){
     	Customer customer = rewardPointsService.getRegisteredCustomerDetailsByCustomerId(customerId);
