@@ -31,7 +31,7 @@ All the necessary data to test the application provided in the below links, and 
 
 #
 
-<h3>Project Setup to Run Application</h3>
+<h3>Steps To Run Application</h3>
 https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/Supporting%20Details.txt
 
 #
