@@ -1,19 +1,45 @@
-Database used as MySQL/H2
-Below are the API's to test with data
+======================================================================
+Prerequisites:
+-----------------------
+Spring Tool Suite(STS)
+PostgreSQL
+Postman
+======================================================================
 
-NOTE: To test the API's the default authentication is as below
-Username: rushikesh
-Password: rushikesh
 
-some other user provided are
-Username: admin
-Password: admin
+Run application using below steps
+----------------------------------------
+STEP 1:
+Download the project and import it in STS as existing maven project.
+-----------------------------------------------------------------------------------
+STEP 2:
+Create a PostgreSQL/MySQL database named rewards.
+-----------------------------------------------------------------------------------
+STEP 3:
+Update the application.properties file with your PostgreSQL/MySQL credentials.
+Also cross check the dependancy of PostgreSQL/MySQL which ever you are going to use.
+If getting any issue then plz check the below document
+https://github.com/joshirushikesh141/RewardPointsProgram/blob/main/DatabaseAll.txt
+-----------------------------------------------------------------------------------
+STEP 4:
+For this project I have applied Spring Security Basic Authentication.
+Username 1: rushikesh
+Password 1: rushikesh
 and
-Username: user
-Password: user
-Provision given to update/add multiple username and password as per the convinience.
+Username 2: admin
+Password 2: admin
 
-=======================================================
+Use above username and passwords while testing in Postman or Swagger UI.
+As per the requirement you can add or edit the users in SecurityConfig file.
+-----------------------------------------------------------------------------------
+STEP 5:
+Run the project and and test it in Postman or on SwaggerUI.
+http://localhost:8080/swagger-ui/index.html
+-----------------------------------------------------------------------------------
+
+NOTE: To test on postman I have provided all the required details and dummy data as below.
+
+===========================================================================================
 
 API's as below
 ---------------------
@@ -202,48 +228,6 @@ Transaction List
   }
 ]
 =============================================================
-
-SOLID Principle Implemented
-
-S- Single Responsibility Principle
-A class should have one single responsibility (or multiple tasks/responibilities create multiple classes)
-
-O- Open for Extension but Closed for Modification Principle(Open/Close Principle)
-For new/extra functionality create new classes and extends/implements it with the previous class/interface (ie. don't do any changes in previouly tested classes/interfaces)
-it is mostly done in production phase to avoid bugs/issues.
-
-L- Liskov Substitution principle
-Class B is subtype of class A then we should be able to replace object of A with B without breaking the behaviour of the program.
-this should work when the subclass(B) extends the capability of parent class(A) and should not narrow it down.
-eg - Bike, Bicycle, Car and the methods are turnOnENgine() and accelerate()
-
-I- Interface Segmented Principle
-Interfaces should be such that the client (class implementing that interface) should not implement unnecessory methods that they do not need.
-eg - class waiter implements restaurantEmployee interface having methods like washDishes(), serveCustomer(), cookFood();
-insted above we can create two seperate interfaces as waiterInterface, chefInterface, HelperInterface with respective methods so that
-waiter class,chef class and helper class can implement the required methods. 
-
-D- Depndency Inversion Principle
-Class should depend on interfaces rather than concrete classes
-using this loose coupling occurs, hence we can use multiple methods or we can change use of the methods are per the requirement 
-
-=============================================================================================================================================
-
-Used of JPA Repository.
-
-Database used as PostgreSQL/MySQL/H2.
-
-Also provided all the details to use PostgreSQL/MySQL/H2 any of these database as per the convinience.
-
-For unit test cases jUnit used.
-
-To check code coverage EclEmma used.
-
-For testing Loggers are added.
-
-Spring security added for the authentication
-
-==============================================================================================================================================
 
 
 
