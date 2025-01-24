@@ -23,7 +23,7 @@ All the necessary data to test the application provided in the below links, and 
   <li>Spring Boot</li>
   <li>Spring Data JPA</li>
   <li>Spring Secutity Authentication</li>
-  <li>PostgreSQL/MySQL/H2 Database</li>
+  <li>PostgreSQL/MySQL Database</li>
   <li>jUnit,Mockito,Eclemma</li>
   <li>Postman</li>
   <li>Swagger UI</li>
