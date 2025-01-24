@@ -90,6 +90,12 @@ public class RewardPointsServiceImpl implements RewardPointsService {
 		return "Transaction details has been deleted !!!";
 	}
 
+	/**
+ 	* Below method retrieves the rewards of a customer by their ID.
+ 	*
+ 	* @param customerId the ID of the customer whose rewards are to be retrieved
+ 	* @return the rewards object containing details of the customer's rewards
+ 	*/
 	@Override
 	public Rewards getRewardsByCustomerId(Long customerId) {
 
@@ -132,10 +138,22 @@ public class RewardPointsServiceImpl implements RewardPointsService {
 		return customerRewards;
 	}
 
+	/**
+	 * Below Method calculates the start date of a month.
+	 *
+ 	* @param days the number of days to subtract to get the start date
+ 	* @return the timestamp representing the start date of the month
+ 	*/
 	public Timestamp getMonthStartDate(int days) {
 		return Timestamp.valueOf(LocalDateTime.now().minusDays(days));
 	}
 
+	/**
+ 	* Below method calculates the rewards for a list of transactions in a month.
+ 	*
+ 	* @param transactions is the list of transactions of a perticular month
+ 	* @return the total rewards for the month
+ 	*/
 	public Long getRewardsPerMonth(List<Transaction> transactions) {
 		long totalRewards = 0;
 		for (Transaction transaction : transactions) {
@@ -144,6 +162,13 @@ public class RewardPointsServiceImpl implements RewardPointsService {
 		return totalRewards;
 	}
 
+	/**
+ 	* Below method is to calculate the rewards based on the transaction amount.
+ 	*
+ 	* @param transactionAmount the amount of the transaction
+ 	* @return the calculated rewards for the transaction
+ 	* @throws IllegalArgumentException if the transaction amount is negative
+ 	*/
 	public Long calculateRewards(Double transactionAmount) {
 		if (transactionAmount < 0) {
 			throw new IllegalArgumentException("Transaction amount cannot be negative");
