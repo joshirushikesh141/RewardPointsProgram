@@ -47,8 +47,12 @@ public class RewardPointsController {
     TransactionRepository transactionRepository;
     
     private static final Logger logger = LoggerFactory.getLogger(RewardPointsController.class);
+	
     /**
-    * Save Customer Details
+    * Save Customer Details -- Handles the customer registration process.
+    * @param customer The customer object received from the request body.
+    * @return ResponseEntity with a success message and HTTP status OK if the customer details are successfully saved.
+    * In case of an exception, it returns a ResponseEntity with an error message and HTTP status INTERNAL_SERVER_ERROR.
     */
     @PostMapping("/customerRegistration")
     public ResponseEntity<String> customerRegistration(@RequestBody Customer customer){
@@ -64,7 +68,10 @@ public class RewardPointsController {
     }
 	
     /**
-    * Get Customer Details By customerId
+    * GetRegistered Customer Details By customerId -- retrives the registered customer data against customer id.
+    * @param customerId The customerId received from the path variable.
+    * @return ResponseEntity with a customer object and HTTP status OK if the customer details are successfully fetched.
+    * In case of an exception, it returns a ResponseEntity with an empty customer object and HTTP status INTERNAL_SERVER_ERROR.
     */
     @GetMapping("/getRegisteredCustomerDetailsById/{customerId}")
     public ResponseEntity<Customer> getRegisteredCustomerDetailsByCustomerId(@PathVariable Long customerId){
@@ -80,7 +87,11 @@ public class RewardPointsController {
     }
 
     /**
-    * Update Customer Details By customerId
+    * Update Customer Details By customerId -- previously added customer data can be updated.
+    * @param customer The customer object received from the request body.
+    * @param customerId The customerId received from the path variable.
+    * @return ResponseEntity with a success message and HTTP status OK if the customer details are successfully updated.
+    * In case data not found, it returns a ResponseEntity with an error message and HTTP status NOT_FOUND.
     */
     @PutMapping("/updateCustomerDetails/{customerId}")
     public ResponseEntity<String> updateCustomerDetails(@RequestBody Customer customer,@PathVariable Long customerId){
@@ -98,9 +109,12 @@ public class RewardPointsController {
 		}
     	return new ResponseEntity<>(saveCustomerDetails,HttpStatus.OK);
     }
-	
+
     /**
-    * Delete Customer Details By customerId
+    * Delete Customer Details By customerId -- previously added customer data can be deleted -- not recommended to delete.
+    * @param customerId The customerId received from the path variable.
+    * @return ResponseEntity with a success message and HTTP status OK if the customer details are successfully deleted.
+    * In case data not found, it returns a ResponseEntity with an error message and HTTP status NOT_FOUND.
     */
     @DeleteMapping("/deleteCustomerDetails/{customerId}")
     public ResponseEntity<String> deleteCustomerDetails(@PathVariable Long customerId){
@@ -119,7 +133,11 @@ public class RewardPointsController {
     }
     
     /**
-    * Save Transaction Details -- Object
+    * Save Transaction Details -- transaction done by customer saved here.
+    * @param transaction The Transaction object received from the request body.
+    * @return ResponseEntity with a success message and HTTP status OK if the transaction details are successfully saved.
+    * In case data not found, it returns a ResponseEntity with an error message and HTTP status NOT_FOUND.
+    * In case of any exception, it returns a ResponseEntity with an error message and HTTP status INTERNAL_SERVER_ERROR.
     */
     @PostMapping("/saveTransactionDetails")
     public ResponseEntity<String> saveTransactionDetails(@RequestBody Transaction transaction){
@@ -146,7 +164,10 @@ public class RewardPointsController {
     }
 
     /**
-    * Save Transaction Details List -- List of Object
+    * Save Transaction Details List -- list of transactions at a time saved here -- this is for application testing purpose.
+    * @param transaction The List of Transaction objects received from the request body.
+    * @return ResponseEntity with a List of Transactions and HTTP status OK if the transaction list details are successfully saved.
+    * In case of any exception, it returns a ResponseEntity with an error message and HTTP status INTERNAL_SERVER_ERROR.
     */
     @PostMapping("/saveAllTransactionDetails")
     public ResponseEntity<List<Transaction>> saveAllTransactionDetails(@RequestBody List<Transaction> transaction){
@@ -170,7 +191,10 @@ public class RewardPointsController {
     }
 
     /**
-    * Get Transaction Details By customerId
+    * Get Transaction Details By customerId -- fetch transaction list by customerid.
+    * @param customerId The customerId received from the path variable.
+    * @return ResponseEntity with a transaction list and HTTP status OK if the transaction details are successfully fetched.
+    * In case of any exception, it returns a ResponseEntity with an empty transaction object and HTTP status INTERNAL_SERVER_ERROR.
     */
     @GetMapping("/getTransactionDetailsByCustomerId/{customerId}")
     public ResponseEntity<List<Transaction>> getTransactionDetailsByCustomerId(@PathVariable Long customerId){
@@ -185,8 +209,13 @@ public class RewardPointsController {
         return new ResponseEntity<>(findByCustomerId,HttpStatus.OK);
     }
 
+
     /**
-    * Update Transaction Details -- Object
+    * Update Transaction Details -- previously done transaction can be updated here.
+    * @param transaction The Transaction object received from the request body.
+    * @param transactionId The transactionId received from the path variable.
+    * @return ResponseEntity with a success message and HTTP status OK if the transaction details are successfully updated.
+    * In case data not found to update, it returns a ResponseEntity with an error message and HTTP status NOT_FOUND.
     */
     @PutMapping("/updateTransactionDetails/{transactionId}")
     public ResponseEntity<String> updateTransactionDetails(@RequestBody Transaction transaction,@PathVariable Long transactionId){
@@ -227,7 +256,10 @@ public class RewardPointsController {
     }
 
     /**
-    * Delete Transaction Details By customerId
+    * Delete Transaction Details By customerId -- previously done transaction can be deleted here -- not recommended to delete.
+    * @param transactionId The transactionId received from the path variable.
+    * @return ResponseEntity with a success message and HTTP status OK if the transaction details are successfully deleted.
+    * In case data not found to delete, it returns a ResponseEntity with an error message and HTTP status NOT_FOUND.
     */
     @DeleteMapping("/deleteTransactionDetails/{transactionId}")
     public ResponseEntity<String> deleteTransactionDetails(@PathVariable Long transactionId){
@@ -246,7 +278,10 @@ public class RewardPointsController {
     }
 
     /**
-    * Get Rewards By customerId
+    * Get Rewards By customerId -- we can get to know the earned rewards by the customers.
+    * @param customerId The customerId received from the path variable.
+    * @return ResponseEntity with a Rewards Object and HTTP status OK if the Rewards details are successfully fetched.
+    * In case of any Exception or customerId not found, it returns a ResponseEntity with null and HTTP status INTERNAL_SERVER_ERROR.
     */
     @GetMapping("/rewards/{customerId}")
     public ResponseEntity<Rewards> getRewardsByCustomerId(@PathVariable Long customerId){
