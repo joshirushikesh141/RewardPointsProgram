@@ -50,30 +50,30 @@ API's as below
 # CUSTOMER
 -------------------------------------------
 POST
-localhost:8080/api/customerRegistration
+localhost:8080/api/customer/customerRegistration
 
 {
     "customerName": "Vidya"
 }
 -------------------------------------------
 GET
-localhost:8080/api/getRegisteredCustomerDetailsById/3
+localhost:8080/api/customer/getRegisteredCustomerDetailsById/3
 -------------------------------------------
 PUT
-localhost:8080/api/updateCustomerDetails/7
+localhost:8080/api/customer/updateCustomerDetails/3
 {
     "customerName": "Rama"
 }
 -------------------------------------------
 DELETE
-localhost:8080/api/deleteCustomerDetails/8
+localhost:8080/api/customer/deleteCustomerDetails/4
 -------------------------------------------
 
 
 # TRANSACTION
 -------------------------------------------
 POST
-localhost:8080/api/saveTransactionDetails
+localhost:8080/api/transaction/saveTransactionDetails
 {
     "customerId": 2,
     "transactionDate": "2024-11-28T14:23:00",
@@ -81,15 +81,15 @@ localhost:8080/api/saveTransactionDetails
 }
 -------------------------------------------
 POST
-localhost:8080/api/saveAllTransactionDetails
+localhost:8080/api/transaction/saveAllTransactionDetails
 
 Check list of object for this endpoint as last
 -------------------------------------------
 GET
-localhost:8080/api/getTransactionDetailsByCustomerId/2
+localhost:8080/api/transaction/getTransactionDetailsByCustomerId/10
 -------------------------------------------
 PUT
-localhost:8080/api/updateTransactionDetails/60
+localhost:8080/api/transaction/updateTransactionDetails/50
 {
     "customerId":2,
     "transactionDate": "2024-12-22T08:30:00",
@@ -97,7 +97,7 @@ localhost:8080/api/updateTransactionDetails/60
 }
 -------------------------------------------
 DELETE
-localhost:8080/api/deleteTransactionDetails/61
+localhost:8080/api/transaction/deleteTransactionDetails/70
 {
     "customerId":2,
     "transactionDate": "2024-12-22T08:30:00",
@@ -110,9 +110,15 @@ localhost:8080/api/deleteTransactionDetails/61
 # REWARDS
 -------------------------------------------
 GET
-localhost:8080/api/rewards/2
+localhost:8080/api/rewards/rewardsByCustomer/3
 -------------------------------------------
-Transaction List
+
+
+
+
+
+Transaction List for POST all
+localhost:8080/api/transaction/saveAllTransactionDetails
 [
 {
     "customerId": 2,
